@@ -67,7 +67,40 @@ function moduleProject2() {
 
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
-
+    if (evt.key == keys.up) {
+      const lastTarget = document.querySelector('.targeted')
+      if (lastTarget.previousElementSibling == null) {
+        return
+      }
+      const nextTarget = lastTarget.parentElement.previousElementSibling.querySelector(`div:nth-child(${[].slice.call(lastTarget.parentElement.children).findIndex(e => e.classList.contains('targeted'))+1})`)
+      lastTarget.classList.remove('targeted')
+      nextTarget.classList.add('targeted')
+    }
+    if (evt.key == keys.down) {
+      const lastTarget = document.querySelector('.targeted')
+      if (lastTarget.nextElementSibling == null) {
+        return
+      }
+      const nextTarget = lastTarget.parentElement.nextElementSibling.querySelector(`div:nth-child(${[].slice.call(lastTarget.parentElement.children).findIndex(e => e.classList.contains('targeted'))+1})`)
+      lastTarget.classList.remove('targeted')
+      nextTarget.classList.add('targeted')
+    }
+    if (evt.key == keys.left) {
+      const lastTarget = document.querySelector('.targeted')
+      if (lastTarget.previousElementSibling == null) {
+        return
+      }
+      lastTarget.classList.remove('targeted')
+      lastTarget.previousElementSibling.classList.add('targeted')
+    }
+    if (evt.key == keys.right) {
+      const lastTarget = document.querySelector('.targeted')
+      if (lastTarget.nextElementSibling == null) {
+        return
+      }
+      lastTarget.classList.remove('targeted')
+      lastTarget.nextElementSibling.classList.add('targeted')
+    }
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
 
     // 👉 TASK 5 - End the game 👈
