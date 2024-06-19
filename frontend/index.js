@@ -113,8 +113,17 @@ function moduleProject2() {
     if (evt.key == keys.space) {
       document.querySelector('.targeted').firstChild.setAttribute('data-status', 'dead')
       document.querySelector('.targeted').setAttribute('style', 'background-color: red')
+      // 👉 TASK 5 - End the game 👈
+      if (document.querySelectorAll("img[data-status='alive']").length < 1) {
+        document.querySelector('p.info').textContent = `Extermination completed in ${Math.floor(getTimeElapsed()*0.001)} seconds!`
+        let restart = document.createElement('button')
+        restart.textContent = 'Restart'
+        document.querySelector('h2').append(restart)
+        document.querySelector('h2 button').addEventListener('click', evt => {
+          location.reload()
+        })
+      }
     }
-    // 👉 TASK 5 - End the game 👈
   })
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
