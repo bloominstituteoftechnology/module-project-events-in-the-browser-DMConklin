@@ -110,7 +110,10 @@ function moduleProject2() {
       }
     }
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
-
+    if (evt.key == keys.space) {
+      document.querySelector('.targeted').firstChild.setAttribute('data-status', 'dead')
+      document.querySelector('.targeted').setAttribute('style', 'background-color: red')
+    }
     // 👉 TASK 5 - End the game 👈
   })
   // 👆 WORK WORK ABOVE THIS LINE 👆
