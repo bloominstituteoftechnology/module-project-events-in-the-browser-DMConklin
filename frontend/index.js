@@ -69,37 +69,45 @@ function moduleProject2() {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
     if (evt.key == keys.up) {
       const lastTarget = document.querySelector('.targeted')
-      if (lastTarget.previousElementSibling == null) {
+      try {
+        const nextTarget = lastTarget.parentElement.previousElementSibling
+          .querySelector(`div:nth-child(${[].slice.call(lastTarget.parentElement.children).findIndex(e => e.classList.contains('targeted'))+1})`)
+        lastTarget.classList.remove('targeted')
+        nextTarget.classList.add('targeted')
+      } catch (e) {
         return
       }
-      const nextTarget = lastTarget.parentElement.previousElementSibling.querySelector(`div:nth-child(${[].slice.call(lastTarget.parentElement.children).findIndex(e => e.classList.contains('targeted'))+1})`)
-      lastTarget.classList.remove('targeted')
-      nextTarget.classList.add('targeted')
     }
     if (evt.key == keys.down) {
       const lastTarget = document.querySelector('.targeted')
-      if (lastTarget.nextElementSibling == null) {
+      try {
+        const nextTarget = lastTarget.parentElement.nextElementSibling
+          .querySelector(`div:nth-child(${[].slice.call(lastTarget.parentElement.children).findIndex(e => e.classList.contains('targeted'))+1})`)
+        lastTarget.classList.remove('targeted')
+        nextTarget.classList.add('targeted')
+      } catch (e) {
         return
       }
-      const nextTarget = lastTarget.parentElement.nextElementSibling.querySelector(`div:nth-child(${[].slice.call(lastTarget.parentElement.children).findIndex(e => e.classList.contains('targeted'))+1})`)
-      lastTarget.classList.remove('targeted')
-      nextTarget.classList.add('targeted')
     }
     if (evt.key == keys.left) {
       const lastTarget = document.querySelector('.targeted')
-      if (lastTarget.previousElementSibling == null) {
+      try {
+        const nextTarget = lastTarget.previousElementSibling.classList
+        lastTarget.classList.remove('targeted')
+        nextTarget.add('targeted')
+      } catch (e) {
         return
       }
-      lastTarget.classList.remove('targeted')
-      lastTarget.previousElementSibling.classList.add('targeted')
     }
     if (evt.key == keys.right) {
       const lastTarget = document.querySelector('.targeted')
-      if (lastTarget.nextElementSibling == null) {
+      try {
+        const nextTarget = lastTarget.nextElementSibling.classList
+        lastTarget.classList.remove('targeted')
+        nextTarget.add('targeted')
+      } catch (e) {
         return
       }
-      lastTarget.classList.remove('targeted')
-      lastTarget.nextElementSibling.classList.add('targeted')
     }
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
 
